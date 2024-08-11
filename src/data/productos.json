@@ -5,70 +5,80 @@
       "title": "Fender Stratocaster",
       "description": "Una guitarra clásica con un sonido legendario.",
       "imageUrl": "https://cdn.mos.cms.futurecdn.net/ef9ddd20456399da110b47a08263bec1-1920-80.jpg.webp",
-      "category": "guitarra"
+      "category": "guitarra",
+      "price": 1500
     },
     {
       "id": 2,
       "title": "Gibson Les Paul",
       "description": "Una guitarra eléctrica de cuerpo sólido conocida por su sustain.",
       "imageUrl": "https://www.falymusic.com/images/detailed/54/LPS519HSNH1_1.jpg",
-      "category": "guitarra"
+      "category": "guitarra",
+      "price": 2000
     },
     {
       "id": 3,
       "title": "Ibanez RG",
       "description": "Una guitarra moderna diseñada para velocidad y precisión.",
       "imageUrl": "https://www.falymusic.com/images/detailed/35/GRG170DX-BKN-2.jpg",
-      "category": "guitarra"
+      "category": "guitarra",
+      "price": 1200
     },
     {
       "id": 4,
       "title": "Marshall JCM800",
       "description": "Un amplificador legendario conocido por su poderoso tono.",
       "imageUrl": "https://hermesmusicclub.mx/cdn/shop/files/91afe21a-6051-43a2-9f29-c6cf7b3cd2bf.jpg?v=1722646667",
-      "category": "amplificador"
+      "category": "amplificador",
+      "price": 800
     },
     {
       "id": 5,
       "title": "Mesa Boogie Dual Rectifier",
       "description": "Un amplificador versátil con un amplio rango tonal.",
       "imageUrl": "https://www.humbuckermusic.com/cdn/shop/products/IMG_7084.JPG?v=1563898811",
-      "category": "amplificador"
+      "category": "amplificador",
+      "price": 1600
     },
     {
       "id": 6,
       "title": "PRS Custom 24",
       "description": "Una guitarra de alta gama conocida por su versatilidad.",
       "imageUrl": "https://images.equipboard.com/uploads/item/image/18359/prs-custom-24-xl.jpg?v=1721823444",
-      "category": "guitarra"
+      "category": "guitarra",
+      "price": 2500
     },
     {
       "id": 7,
       "title": "Orange Rockerverb",
       "description": "Un amplificador británico con un sonido distintivo.",
       "imageUrl": "https://m.media-amazon.com/images/I/61yVlMxyfDL._AC_UF1000,1000_QL80_.jpg",
-      "category": "amplificador"
+      "category": "amplificador",
+      "price": 1200
     },
     {
       "id": 8,
       "title": "Yamaha Pacifica",
       "description": "Una guitarra económica con grandes características.",
       "imageUrl": "https://i5.walmartimages.com.mx/mg/gm/3pp/asr/dbcf9e77-aa87-444d-ae7d-ee211d212041.28a135d45e8d6c04b7e9b3ae593256b7.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
-      "category": "guitarra"
+      "category": "guitarra",
+      "price": 700
     },
     {
       "id": 9,
       "title": "Vox AC30",
       "description": "Un amplificador icónico usado por muchas bandas famosas.",
       "imageUrl": "https://guitardepotmx.com/cdn/shop/products/photo_ac30_1548196704.jpg?v=1657826116",
-      "category": "amplificador"
+      "category": "amplificador",
+      "price": 1800
     },
     {
       "id": 10,
       "title": "Epiphone Dot",
       "description": "Una guitarra semi-hueca con un tono cálido y completo.",
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_842485-MLM32024666043_082019-O.webp",
-      "category": "guitarra"
+      "category": "guitarra",
+      "price": 900
     }
   ]
 }
