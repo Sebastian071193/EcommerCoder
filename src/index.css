@@ -1,1 +1,17 @@
 span {color: orange;}
+.btn-custom {
+    background-color: orange !important; 
+    border-color: orange !important; 
+    color: white !important; 
+}
+
+.btn-custom:hover {
+    background-color: darkorange !important;
+    border-color: darkorange !important; 
+}
+
+
+.price {
+    color: orange; 
+    font-weight: bold; 
+}

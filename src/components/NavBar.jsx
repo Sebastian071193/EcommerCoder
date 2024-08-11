@@ -10,8 +10,8 @@ export const NavBar = () => {
     <Navbar bg="dark" data-bs-theme="dark">
       <Container>
         <Nav className="me-auto">
-          <Nav.Link as={NavLink} to="/">
-            Inicio
+          <Nav.Link as={NavLink} to="/" style={{ color: "orange" }}>
+            Guitar Yeah Center
           </Nav.Link>
           <Nav.Link as={NavLink} to="#/category/guitar">
             Guitarras
