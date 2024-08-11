@@ -13,10 +13,10 @@ export const NavBar = () => {
           <Nav.Link as={NavLink} to="/" style={{ color: "orange" }}>
             Guitar Yeah Center
           </Nav.Link>
-          <Nav.Link as={NavLink} to="#/category/guitar">
+          <Nav.Link as={NavLink} to="/category/guitar">
             Guitarras
           </Nav.Link>
-          <Nav.Link as={NavLink} to="#/category/amplifier">
+          <Nav.Link as={NavLink} to="/category/amplifier">
             Amplificadores
           </Nav.Link>
         </Nav>

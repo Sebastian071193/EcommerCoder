@@ -75,7 +75,7 @@ export const ItemListContainer = () => {
                 </Card.Text>
                 <div className="mt-auto">
                   <Button variant="primary" className="w-100">
-                    Agregar
+                    Ver
                   </Button>
                 </div>
               </Card.Body>
