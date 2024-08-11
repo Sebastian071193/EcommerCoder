@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
-import data from "../data/productos.json";
-import Card from "react-bootstrap/Card";
+import  Container  from "react-bootstrap/Container";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
-console.log(data);
+import data from "../data/productos.json";
 
 export const ItemListContainer = () => {
   const [items, setItems] = useState([]);
@@ -17,7 +17,7 @@ export const ItemListContainer = () => {
 
   return (
     <Container className="mt-4 d-flex">
-      {items.map((i) => (
+      {items.item.map((i) =>(
         <Card key={i.id} style={{ width: "18rem" }}>
           <Card.Img variant="top" src={i.imageUrl} />
           <Card.Body>
