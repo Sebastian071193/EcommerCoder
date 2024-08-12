@@ -25,7 +25,7 @@ export const ItemListContainer = () => {
         }
       })
       .finally(() => setLoading(false));
-  }, [!id]);
+  }, [id]);
 
   if (loading) {
     return (
@@ -69,10 +69,11 @@ export const ItemListContainer = () => {
                 <Card.Text className="fw-bold text-primary">
                   ${i.price.toLocaleString()}
                 </Card.Text>
-            
+
                 <div className="mt-auto">
-                <Link to={`/item/${i.id}`}>
-                  <Button variant="primary">Ver</Button></Link>
+                  <Link to={`/item/${i.id}`}>
+                    <Button variant="primary">Ver</Button>
+                  </Link>
                 </div>
               </Card.Body>
             </Card>
