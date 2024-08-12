@@ -11,13 +11,13 @@ export const ItemDetailsContainer = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    new Promise((resolve) => setTimeout(resolve(data), 2000))
+    new Promise((resolve) => setTimeout(() => resolve(data), 2000))
       .then((response) => {
-        const finded = response.find((i) => i.id === number(id));
+        const finded = response.find((i) => i.id === Number(id));
         setItems(finded);
       })
       .finally(() => setLoading(false));
-  }, []);
+  }, [id]);
 
   if (loading) return "wait";
 

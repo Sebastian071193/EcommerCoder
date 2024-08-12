@@ -18,9 +18,9 @@ export const ItemListContainer = () => {
     new Promise((resolve, reject) => setTimeout(resolve(data), 2000))
       .then((response) => {
         if (!id) {
-          setItems(response);
+          setItems(response.items);
         } else {
-          const filtered = response.filter((i) => i.category === id);
+          const filtered = response.items.filter((i) => i.category === id);
           setItems(filtered);
         }
       })
@@ -43,7 +43,7 @@ export const ItemListContainer = () => {
   return (
     <Container className="mt-5">
       <Row className="g-4">
-        {items.items.map((i) => (
+        {items.map((i) => (
           <Col key={i.id} md={4} sm={6} xs={12}>
             <Card className="h-100 shadow-sm border-0">
               <div
@@ -74,9 +74,11 @@ export const ItemListContainer = () => {
                   ${i.price.toLocaleString()}
                 </Card.Text>
                 <div className="mt-auto">
-                  <Button variant="primary" className="w-100">
+<Link to={`/items/${i.id}`}>
+                  <Button variant="primary">
                     Ver
                   </Button>
+                  </Link>          
                 </div>
               </Card.Body>
             </Card>
