@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Spinner from "react-bootstrap/Spinner";
 import { useParams } from "react-router-dom";
 
 import data from "../data/productos.json";
@@ -32,11 +32,7 @@ export const ItemListContainer = () => {
       <Container
         className="d-flex justify-content-center align-items-center"
         style={{ height: "100vh" }}
-      >
-        <Spinner animation="border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
-      </Container>
+      ></Container>
     );
   }
 
@@ -73,12 +69,10 @@ export const ItemListContainer = () => {
                 <Card.Text className="fw-bold text-primary">
                   ${i.price.toLocaleString()}
                 </Card.Text>
+            
                 <div className="mt-auto">
-<Link to={`/items/${i.id}`}>
-                  <Button variant="primary">
-                    Ver
-                  </Button>
-                  </Link>          
+                <Link to={`/item/${i.id}`}>
+                  <Button variant="primary">Ver</Button></Link>
                 </div>
               </Card.Body>
             </Card>
