@@ -6,8 +6,13 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useParams } from "react-router-dom";
-
-import data from "../data/productos.json";
+import {
+  getFirestore,
+  getDocs,
+  where,
+  query,
+  collection,
+} from "firebase/firestore";
 
 export const ItemListContainer = () => {
   const [items, setItems] = useState([]);
@@ -15,14 +20,18 @@ export const ItemListContainer = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    new Promise((resolve, reject) => setTimeout(resolve(data), 2000))
-      .then((response) => {
-        if (!id) {
-          setItems(response.items);
-        } else {
-          const filtered = response.items.filter((i) => i.category === id);
-          setItems(filtered);
-        }
+    const db = getFirestore();
+    const ref = !id
+      ? collection(db, "items")
+      : query(collection(db, "items"), where("categoryId", "==", id));
+
+    getDocs(ref)
+      .then((snapshot) => {
+        setItems(
+          snapshot.docs.map((doc) => {
+            return { id: doc.id, ...doc.data() };
+          })
+        );
       })
       .finally(() => setLoading(false));
   }, [id]);
@@ -54,7 +63,7 @@ export const ItemListContainer = () => {
               >
                 <Card.Img
                   variant="top"
-                  src={i.imageUrl}
+                  src={i.imageId}
                   style={{
                     maxHeight: "100%",
                     maxWidth: "100%",
@@ -65,7 +74,7 @@ export const ItemListContainer = () => {
               <Card.Body className="d-flex flex-column">
                 <Card.Title className="text-center">{i.title}</Card.Title>
                 <Card.Text className="text-muted">{i.description}</Card.Text>
-                <Card.Text className="text-muted">{i.category}</Card.Text>
+                <Card.Text className="text-muted">{i.categoryId}</Card.Text>
                 <Card.Text className="fw-bold text-primary">
                   ${i.price.toLocaleString()}
                 </Card.Text>

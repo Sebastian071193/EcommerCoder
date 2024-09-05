@@ -1,29 +1,47 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import data from "../data/productos.json";
+import { Container, Row, Col, Card } from "react-bootstrap";
+import { ItemCount } from "./ItemCount";
+import { getFirestore, getDoc, doc } from "firebase/firestore";
+import { ItemsContext } from "../cont/ItemContext";
 
 export const ItemDetailsContainer = () => {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+  const { addItem } = useContext(ItemsContext);
 
   useEffect(() => {
-    new Promise((resolve) => setTimeout(() => resolve(data), 2000))
-      .then((response) => {
-        const foundItem = response.items.find((i) => i.id === Number(id));
-        setItem(foundItem);
+    const db = getFirestore();
+    const refDoc = doc(db, "items", id);
+
+    getDoc(refDoc)
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          setItem({ ...snapshot.data(), id: snapshot.id });
+        } else {
+          console.log("El artículo no existe.");
+        }
       })
-      .finally(() => setLoading(false));
+      .catch((error) => {
+        console.error("Error al obtener el detalle del artículo:", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, [id]);
+
+  const handleAddToCart = (quantity) => {
+    if (item) {
+      addItem({ ...item, quantity });
+    }
+  };
 
   if (loading) {
     return (
       <Container className="mt-4">
         <h1>Cargando...</h1>
-        <p>
-          Estamos obteniendo la información del artículo. Por favor, espera.
-        </p>
+        <p>Estamos obteniendo la información del artículo. Por favor, espera.</p>
       </Container>
     );
   }
@@ -31,10 +49,8 @@ export const ItemDetailsContainer = () => {
   if (!item) {
     return (
       <Container className="mt-4">
-        <h1>Item no encontrado</h1>
-        <p>
-          Lo siento, no hemos podido encontrar el artículo que estás buscando.
-        </p>
+        <h1>Artículo no encontrado</h1>
+        <p>No hemos podido encontrar el artículo que buscas.</p>
       </Container>
     );
   }
@@ -44,23 +60,18 @@ export const ItemDetailsContainer = () => {
       <Row>
         <Col md={6} className="d-flex justify-content-center">
           <Card style={{ width: "100%" }}>
-            <Card.Img variant="top" src={item.imageUrl} />
+            <Card.Img variant="top" src={item.imageId} />
           </Card>
         </Col>
         <Col md={6}>
           <h1>{item.title}</h1>
           <h2>{item.category}</h2>
           <h3>{item.description}</h3>
+          <b>Cantidad disponible: {item.stock}</b>
+          <ItemCount stock={item.stock} onAdd={handleAddToCart} />
           <p className="fw-bold fs-4">${item.price.toLocaleString()}</p>
-          <Button variant="primary" onClick={() => handleAddToCart(item)}>
-            Agregar al carrito
-          </Button>
         </Col>
       </Row>
     </Container>
   );
-};
-
-const handleAddToCart = (item) => {
-  alert(`${item.title} ha sido agregado al carrito.`);
 };
